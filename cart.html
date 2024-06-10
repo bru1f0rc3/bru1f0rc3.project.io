@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Корзина</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js"></script>
+</head>
+<style>
+.container {
+    /* Убедитесь, что контейнер виден, когда уведомление активно */
+    display: none; /* Изначально скрыт */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Полупрозрачный фон */
+    z-index: 1000; /* Выше других элементов */
+    justify-content: center;
+    align-items: center;
+}
+
+#notification {
+    /* Стили для уведомления */
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+    </style>
+<body>
+
+    <main>
+        <section id="cart">
+            <h2>Корзина</h2>
+            <ul id="cart-items"></ul>
+            <p id="total-price"></p>
+            <button onclick="clearCart()">Очистить корзину</button>
+        </section>
+        
+        <section id="checkout">
+            <h2>Оплата</h2>
+            <div class="checkout-container">
+                <div class="checkout-info">
+                    <p id="total-price"></p>
+                    <p id="shipping-info">Доставка: бесплатно</p>
+                </div>
+            </div>
+            <section id="customer-details">
+                <h2>Информация о покупателе</h2>
+                <div id="personal-info" class="tab-content">
+                    <input type="text" name="nicknames" id="nickname-input" placeholder="Никнейм" />
+                    <input type="email" placeholder="Почта" />
+                </div>
+            
+                <div id="address-info" class="tab-content">
+                    <input type="text" placeholder="Адрес" />
+                    <input type="text" placeholder="Индекс" />
+                </div>
+            </section>
+            <form id="checkout-form">
+                <div class="credit-card-container">
+                    <div class="credit-card">
+                        <div class="card-number">
+                            <input type="text" maxlength="19" placeholder="1234 5678 9012 3456" />
+                        </div>
+                        <div class="card-info">
+                            <div class="card-expiry">
+                                <span class="label">EXP</span>
+                                <input type="text" maxlength="5" placeholder="MM/YY" />
+                            </div>
+                            <div class="card-cvc">
+                                <span class="label">CVC</span>
+                                <input type="text" maxlength="3" placeholder="123" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div id="notification"></div>
+                </div>
+                <button type="button" class="btn">Оплатить</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Магазин автоаксессуаров. Все права защищены.</p>
+    </footer>
+    
+    <script src="script.js"></script>
+</body>
+</html>

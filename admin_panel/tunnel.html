@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Админ-панель</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            align-items:flex-start;
+            margin-top: 400px;
+        }
+
+        .sidebar-button {
+            display: block;
+            background-color: #007bff;
+            color: #fff;
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            width: 200px;
+            text-align: center;
+        }
+
+        .sidebar-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <a href="add.html" class="sidebar-button" target="subframe">Добавление</a>
+        <a href="edit.html" class="sidebar-button" target="subframe">Редактирование</a>
+        <a href="delete_item.html" class="sidebar-button" target="subframe">Удаление</a>
+        <a href="../index.html"class="sidebar-button" target="_top">Выйти с Админ-панели</a>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Вход в систему</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js"></script>
+  <script src="script.js"></script>
+  <style>
+    #stuff { 
+  /* Убираем выделение при наведении */
+  -webkit-tap-highlight-color: transparent; 
+  /* Скрываем курсор при наведении */
+  cursor: default; 
+  color: #333;
+}
+  </style>
+</head>
+<body>
+  <main>
+      <form id="login-form" onsubmit="event.preventDefault(); loginUser();">
+        <label for="login-username">Имя пользователя:</label>
+        <input type="text" id="login-username" name="username" required>
+        <label for="login-password">Пароль:</label>
+        <input type="password" id="login-password" name="password" required>
+        <button type="submit">Войти</button>
+        <a href="registration.html" class="register-link button">Регистрация</a>
+        <button onclick="checkAdminPassword(); return false;" id="stuff" style="text-decoration: none; font-size: small;">Для сотрудников</button>
+        <div id="result"></div>
+      </form>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Магазин автоаксессуаров. Все права защищены.</p>
+  </footer>
+  <script>
+    function checkAdminPassword() {
+        const password = prompt('Введите пароль для доступа к админ-панели:');
+        if (password === 'isp11') {
+            window.open('admin_panel/panel.html', 'content');
+        } else {
+            alert('Неверный пароль. Доступ к админ-панели запрещен.');
+        }
+    }
+
+    window.addEventListener('DOMContentLoaded', async () => {
+    await initializeDB();
+    loginUser();
+  });
+</script>
+</body>
+</html>

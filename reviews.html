@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Reviews</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+    <h1>Отзывы о наших автоаксессуаров</h1>
+    <div>
+        <label for="author" class="label">Ваше Имя:</label>
+        <input type="text" id="author" placeholder="Напишите свое имя" value="">
+        <label for="review" class="label">Отзыв:</label>
+        <textarea id="review" class="review-textarea" placeholder="Напишите свой отзыв"></textarea>
+        <label for="rating" class="label">Рейтинг:</label>
+        <select id="rating">
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+        <button onclick="saveReview(document.getElementById('author').value, document.getElementById('review').value, document.getElementById('rating').value)">Отправить отзыв</button>
+      </div>
+      <div id="reviews-container"></div>
+
+  </body>

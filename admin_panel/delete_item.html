@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Item</title>
+    <style>
+        /* Общие стили */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        /* Стили формы */
+        .form-container {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button[type="submit"] {
+            background-color: #f44336;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 12px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #d32f2f;
+        }
+
+        /* Стили заголовка */
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        /* Стили сообщения */
+        .message {
+            text-align: center;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        /* Адаптивный дизайн */
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>Удаление продукта</h1>
+  
+    <form id="delete-form">
+      <label for="product-name">Название продукта:</label>
+      <input type="text" id="product-name" name="product-name" required>
+  
+      <label for="product-category">Категория:</label>
+      <select id="product-category" name="product-category">
+        <option value="">Все</option>
+        <option value="Оплётка на рулевое колесо">Оплётка на рулевое колесо</option>
+        <option value="Интерьер авто">Интерьер авто</option>
+        <option value="Коврики">Коврики</option>
+        <option value="Электроника">Электроника</option>
+        <option value="Ароматизаторы">Ароматизаторы</option>
+      </select>
+  
+      <button type="submit">Удалить</button>
+    </form>
+  
+    <div id="result"></div>
+  
+    <script src="../product.js"></script>
+  </body>
+</html>

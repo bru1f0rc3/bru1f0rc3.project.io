@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Регистрация</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>Регистрация</h1>
+    <form id="registration-form">
+        <label for="username">Имя пользователя:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Пароль:</label>
+        <input type="password" id="password" name="password" required>
+        <label for="email">Email:</label>
+        <input type="email" class="email-input" id="email" name="email" required>
+        <button type="submit" class="register-button">Зарегистрироваться</button>
+      </form>
+
+      <div id="result"></div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Магазин автоаксессуаров. Все права защищены.</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин автоаксессуаров</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js"></script>
+    <script src="script.js"></script>
+</head>
+<body>
+    <header id="header">
+        <nav>
+            <ul class="left-menu">
+                <a href="content.html" target="content"><img src="logo/1.png" alt="Логотип" width="100" height="50"></a>
+                <li><a href="content.html" target="content">АксАвто</a></li>
+                <li><a href="products.html" target="content">Товары</a></li>
+                <li><a href="contact.html" target="content">Контакты</a></li>
+                <li><a href="about.html" target="content">О нас</a></li>
+                <li><a href="reviews.html" target="content">Отзывы</a></li>
+            </ul>
+            <ul class="right-menu">
+                <div class="user-menu">
+                    <button class="user-menu-button">
+                      <span id="login-username"></span>
+                      <i class="fas fa-caret-down"></i>
+                    </button>
+                    <div class="user-menu-dropdown">
+                        <a href="#" onclick="logout(); return false;">Выход</a>
+                      </div>
+                  </div>
+                <li><a href="login.html" target="content">Вход</a></li>
+                <li><a href="cart.html" target="content">Корзина</a></li>
+            </ul>
+        </nav>
+    </header>
+</body>
+</html>

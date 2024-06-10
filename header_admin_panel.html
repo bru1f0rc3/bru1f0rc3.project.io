@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Магазин автоаксессуаров</title>
+    <style>
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Стили header */
+header {
+  background-color: #333;
+  color: #fff;
+  padding: 0.5rem 2rem; /* Увеличиваем вертикальный отступ */
+  display: flex;
+  justify-content: center; /* Выравнивание по центру */
+  align-items: center;
+  position: sticky; /* Сделаем header прилипающим к верху страницы */
+  top: 20; /* Прилипает к верху страницы */
+  z-index: 100; /* Приоритет над остальным содержимым */
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  margin-left: 1.5rem;
+}
+
+nav a {
+  font-size: 1.1rem;
+  position: relative;
+  padding-bottom: 5px;
+}
+
+nav a:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  transition: width 0.3s ease-in-out;
+}
+
+nav a:hover:before {
+  width: 100%;
+}
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <div class="logo">
+                    <p>Добро пожаловать в Административную-панель управления</p>
+                </div>
+            </ul>
+        </nav>
+    </header> 
+</body>
+</html>

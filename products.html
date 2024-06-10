@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="script.js"></script>
+  <script src="app.js"></script>
+  <script src="product.js"></script>
+  <title>Товары</title>
+  <style>
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5f5;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.filter-container label {
+  margin-right: 15px;
+  font-size: 16px;
+}
+
+#product-list-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 0 20px;
+}
+
+#product-container {
+  background-color: #fff;
+  border: 1px solid #e5e5e5;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+}
+
+#product-img {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+#product-name {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+#product-price {
+  font-size: 16px;
+  font-weight: 700;
+  color: #333;
+  margin-top: 10px;
+}
+
+button[type="submit"] {
+  background-color: #0071c5;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #005a9e;
+}
+
+.auth-popup {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.auth-popup-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 30%;
+}
+
+  </style>
+</head>
+<body>
+    <h1>Список Товаров</h1>
+    <label for="category-dropdown">Выбранная категория:</label>
+    <select id="category-dropdown">
+      <option value="">Всё</option>
+      <option value="Оплётка на рулевое колесо">Оплётка на рулевое колесо</option>
+      <option value="Интерьер авто">Интерьер авто</option>
+      <option value="Коврики">Коврики</option>
+      <option value="Электроника">Электроника</option>
+      <option value="Ароматизаторы">Ароматизаторы</option>
+    </select>  
+    <div id="auth-popup" class="auth-popup">
+      <div class="auth-popup-content">
+        <h2>Пожалуйста, авторизуйтесь</h2>
+        <button id="auth-btn">Авторизоваться</button>
+      </div>
+    </div>
+    <div id="product-container"></div>
+
+    <script src="product.js"></script>
+    <script>
+      const categoryDropdown = document.getElementById('category-dropdown');
+    
+      // Обновленная функция для проверки авторизации
+            function checkAuthorization(callback) {
+        if (window.isUserAuthorized()) {
+          callback();
+        } else {
+          const authPopup = document.getElementById('auth-popup');
+          authPopup.style.display = 'block';
+
+          // Добавьте обработчик клика на кнопку авторизации
+          const authBtn = document.getElementById('auth-btn');
+          authBtn.addEventListener('click', () => {
+            // Перенаправляем пользователя на страницу login.html
+            window.location.href = 'login.html';
+          });
+        }
+      }
+      async function displayProducts(category = '') {
+        try {
+          const products = await getProducts(category);
+          const productContainer = document.getElementById('product-container');
+          productContainer.innerHTML = '';
+    
+          products.forEach(product => {
+            const productElement = document.createElement('div');
+            productElement.innerHTML = `
+              <img id="product-img" src="${product.imageUrl}" alt="${product.name}">
+              <h3 class="product-name">${product.name}</h3>
+              <p class="product-category">Категория: ${product.category}</p>
+              <p class="product-price">Цена: ${product.price} руб</p>
+              <button class="add-to-cart" type="submit" data-name="${product.name}" data-price="${product.price}">Добавить в корзину</button>
+            `;
+            productContainer.appendChild(productElement);
+    
+            // Добавляем обработчик событий для кнопки "Добавить в корзину"
+            const addToCartButton = productElement.querySelector('.add-to-cart');
+    
+            // Вызываем checkAuthorization перед добавлением в корзину
+            addToCartButton.addEventListener('click', () => {
+              checkAuthorization(() => {
+                // Существующая логика для добавления в корзину
+                addToCart(product.name, product.price);
+              });
+            });
+          });
+        } catch (error) {
+          console.error('Ошибка при отображении продуктов:', error);
+        }
+      }
+    
+      categoryDropdown.addEventListener('change', () => {
+        const selectedCategory = categoryDropdown.value;
+        displayProducts(selectedCategory);
+      });
+    
+      displayProducts();
+    </script>
+  </body>
+</html>
